@@ -1,0 +1,33 @@
+<mat-sidenav-container style="min-height: 100%">
+    <mat-sidenav #sidenav mode="over">
+        <div class="uranus sidenav-head">
+            <strong>{{ title }}</strong>
+        </div>
+        <mat-selection-list [multiple]="false" (selectionChange)="sidenav.close()">
+            
+            <mat-list-option *ngFor="let item of items" [routerLink]="item.link">
+                {{ item.name }}
+              </mat-list-option>
+        </mat-selection-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+        <mat-toolbar color="primary">
+            <ng-container *ngIf="isDesktop | async; else mobile">
+                <strong style="padding: 0 1rem">{{ title }}</strong>
+                <button mat-button *ngFor="let item of items" [routerLink]="item.link">{{ item.name }}</button>
+            </ng-container>
+        </mat-toolbar>
+
+        <ng-content></ng-content>
+        
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<ng-template #mobile>
+    <button mat-icon-button aria-label="menu" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+</ng-template>

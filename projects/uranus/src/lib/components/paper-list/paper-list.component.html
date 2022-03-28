@@ -1,0 +1,22 @@
+<form [formGroup]="filtersForm" style="display: flex; align-items: center; gap:1rem">
+    <mat-form-field appearance="fill">
+        <mat-label>Years</mat-label>
+        <mat-select formControlName="years">
+          <mat-option>All</mat-option>
+          <mat-option *ngFor="let year of allYears" [value]="year">{{year}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Authors</mat-label>
+      <mat-select formControlName="authors">
+        <mat-option>All</mat-option>
+        <mat-option *ngFor="let author of allAuthors" [value]="author">{{author}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-button (click)="restoreFilters()">Clear</button>
+</form>
+
+
+<app-paper *ngFor="let p of filteredPapers | async" [paper]="p"></app-paper>
