@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators'
 import { NavbarItem } from './navbar-item';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'uranus-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

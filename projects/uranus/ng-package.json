@@ -3,5 +3,8 @@
   "dest": "../../dist/uranus",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": [
+    "scripts/uranus-bibtex.py"
+  ]
 }

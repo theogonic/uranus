@@ -5,7 +5,7 @@ import { map, startWith, tap } from 'rxjs/operators';
 import { authorExistInPaper, getAuthorsInStringArr, Paper } from '../paper/paper';
 
 @Component({
-  selector: 'app-paper-list',
+  selector: 'uranus-paper-list',
   templateUrl: './paper-list.component.html',
   styleUrls: ['./paper-list.component.scss']
 })

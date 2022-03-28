@@ -3,7 +3,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Paper } from './paper';
 
 @Component({
-  selector: 'app-paper',
+  selector: 'uranus-paper',
   templateUrl: './paper.component.html',
   styleUrls: ['./paper.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
