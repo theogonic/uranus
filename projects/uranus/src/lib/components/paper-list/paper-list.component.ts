@@ -18,7 +18,7 @@ const month2Num: {
     "March" : 3,
     "April" : 4,
     "May" : 5,
-    "Jun" : 6,
+    "June" : 6,
     "July" : 7,
     "August" : 8,
     "September" : 9,
@@ -124,10 +124,21 @@ export class PaperListComponent implements OnInit, OnChanges {
 
   sortPapersByMonth(papers: Paper[]): Paper[] {
     return papers.sort((a, b)=> {
-      const am = a.month || ""
-      const bm = b.month || ""
-      return month2Num[bm] - month2Num[am]
+      return this.getMonthNum(b.month) - this.getMonthNum(a.month)
     })
+  }
+
+  getMonthNum(mon?: string): number {
+    if(!mon){
+      return -1;
+    }
+    const splitIdx = mon.indexOf("-");
+    if(splitIdx == -1) {
+      return month2Num[mon];
+    }
+    else {
+      return month2Num[mon.substring(0, splitIdx)];
+    }
   }
 
   filterPapers(papers: Paper[], filters:any): Paper[] {

@@ -4,7 +4,12 @@
       <ng-container [ngSwitch]="groupsConfig[item.group]">
         <ng-container *ngSwitchCase="'text-only'">
           <mat-nav-list>
-            <a mat-list-item [href]="p.link" *ngFor="let p of item.people"> {{ p.name }} </a>
+            <a mat-list-item [href]="p.link" *ngFor="let p of item.people"> 
+                <div style="margin-right: 1rem;">{{ p.name }} </div>
+                <ng-container *ngIf="p.desc">
+                  <div *ngFor="let d of p.desc"> {{d}} </div>
+                </ng-container>
+            </a>
          </mat-nav-list>
         </ng-container>
 
