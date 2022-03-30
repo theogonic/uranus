@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { PersonComponent } from './components/person/person.component';
 import { PersonListComponent } from './components/person-list/person-list.component';
+import { RemoveSuffixPipe } from './pipes/remove-suffix.pipe';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -29,7 +30,8 @@ import { PersonListComponent } from './components/person-list/person-list.compon
     PaperBibtexDialog,
     PaperListComponent,
     PersonComponent,
-    PersonListComponent
+    PersonListComponent,
+    RemoveSuffixPipe
   ],
   imports: [
     CommonModule,
@@ -54,7 +56,8 @@ import { PersonListComponent } from './components/person-list/person-list.compon
     NavbarComponent,
     PaperComponent,
     PaperListComponent,
-    PersonListComponent
+    PersonListComponent,
+    RemoveSuffixPipe
   ]
 })
 export class UranusModule { }

@@ -10,4 +10,5 @@ export { Paper } from './lib/components/paper/paper';
 export { Person } from './lib/components/person/person';
 export { PersonComponent } from './lib/components/person/person.component';
 export { PersonListComponent } from './lib/components/person-list/person-list.component';
-export { NavbarItem } from './lib/components/navbar/navbar-item'
+export { NavbarItem } from './lib/components/navbar/navbar-item';
+export {RemoveSuffixPipe} from "./lib/pipes/remove-suffix.pipe"

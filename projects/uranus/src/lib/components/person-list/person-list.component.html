@@ -1,9 +1,21 @@
 <div *ngIf="groupPeople | async as gp">
     <div *ngFor="let item of gp">
       <h2>{{ item.group }}</h2>
-      <div class="uranus person-list">
-        <uranus-person *ngFor="let p of item.people" [person]="p"></uranus-person>
-      </div>
+      <ng-container [ngSwitch]="groupsConfig[item.group]">
+        <ng-container *ngSwitchCase="'text-only'">
+          <mat-nav-list>
+            <a mat-list-item [href]="p.link" *ngFor="let p of item.people"> {{ p.name }} </a>
+         </mat-nav-list>
+        </ng-container>
+
+        <ng-container *ngSwitchDefault>
+          <div class="uranus person-list">
+            <uranus-person *ngFor="let p of item.people" [person]="p"></uranus-person>
+          </div>
+        </ng-container>
+      </ng-container>
+     
+
     </div>
 
 </div>

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Paper } from './paper';
+import { Author, Paper } from './paper';
 
 @Component({
   selector: 'uranus-paper',
@@ -24,6 +24,10 @@ export class PaperComponent implements OnInit {
     window.open(link);
   }
 
+  clickAuthor(author: Author) {
+    if(author.link)
+    window.open(author.link);
+  }
   showAbstract(){
     this.dialog.open(PaperAbstractDialog, { data: this.paper })
   }
