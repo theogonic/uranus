@@ -1,0 +1,2 @@
+bibtexparser==1.2.0
+PyYAML==6.0.0

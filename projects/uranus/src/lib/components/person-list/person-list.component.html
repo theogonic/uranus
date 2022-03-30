@@ -1,0 +1,9 @@
+<div *ngIf="groupPeople | async as gp">
+    <div *ngFor="let item of gp">
+      <h2>{{ item.group }}</h2>
+      <div class="uranus person-list">
+        <uranus-person *ngFor="let p of item.people" [person]="p"></uranus-person>
+      </div>
+    </div>
+
+</div>

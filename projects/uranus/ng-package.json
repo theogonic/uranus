@@ -5,6 +5,8 @@
     "entryFile": "src/public-api.ts"
   },
   "assets": [
-    "scripts/uranus-bibtex.py"
+    "scripts/uranus-bibtex.py",
+    "scripts/requirements.txt",
+    "styles/_uranus-theme.scss"
   ]
 }

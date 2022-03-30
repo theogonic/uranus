@@ -18,14 +18,18 @@ import { PaperListComponent } from './components/paper-list/paper-list.component
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {MatInputModule} from '@angular/material/input';
+import { PersonComponent } from './components/person/person.component';
+import { PersonListComponent } from './components/person-list/person-list.component';
 @NgModule({
   declarations: [
     NavbarComponent,
     PaperComponent,
     PaperAbstractDialog,
     PaperBibtexDialog,
-    PaperListComponent
+    PaperListComponent,
+    PersonComponent,
+    PersonListComponent
   ],
   imports: [
     CommonModule,
@@ -43,12 +47,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatInputModule
   ],
   exports: [
     NavbarComponent,
     PaperComponent,
-    PaperListComponent
+    PaperListComponent,
+    PersonListComponent
   ]
 })
 export class UranusModule { }

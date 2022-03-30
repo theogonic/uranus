@@ -1,4 +1,9 @@
-<form [formGroup]="filtersForm" style="display: flex; align-items: center; gap:1rem">
+<form [formGroup]="filtersForm" style="display: flex; align-items: center; gap:1rem; flex-wrap: wrap;">
+    <mat-form-field appearance="fill">
+      <mat-label>Paper's name or conference</mat-label>
+      <input matInput formControlName="searchStr">
+    </mat-form-field>
+
     <mat-form-field appearance="fill">
         <mat-label>Years</mat-label>
         <mat-select formControlName="years">
@@ -18,5 +23,12 @@
     <button mat-button (click)="restoreFilters()">Clear</button>
 </form>
 
+<div *ngIf="filteredPapers | async as paperYears">
+    <div *ngFor="let item of paperYears">
+      <h2>{{ item.year }}</h2>
+      <div class="uranus paper-list">
+        <uranus-paper *ngFor="let p of item.papers" [paper]="p"></uranus-paper>
+      </div>
+    </div>
 
-<uranus-paper *ngFor="let p of filteredPapers | async" [paper]="p"></uranus-paper>
+</div>

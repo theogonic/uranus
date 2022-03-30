@@ -1,0 +1,23 @@
+.uranus.person-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: stretch;
+}
+
+uranus-person {
+    max-width: 47%;
+}
+
+@media only screen and (min-width: 960px){
+    .uranus.person-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+    }
+
+    uranus-person {
+        max-width:28%;
+    }
+}
