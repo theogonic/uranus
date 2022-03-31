@@ -1,34 +1,50 @@
-<form [formGroup]="filtersForm" style="display: flex; align-items: center; gap:1rem; flex-wrap: wrap;">
-    <mat-form-field appearance="fill">
-      <mat-label>Paper's name or conference</mat-label>
-      <input matInput formControlName="searchStr">
-    </mat-form-field>
+<mat-sidenav-container >
+  <mat-sidenav #drawer mode="over" position="end">
+    <form [formGroup]="filtersForm" style="display: flex; flex-direction: column; gap:1rem; flex-wrap: wrap; padding: 1rem;">
+      <mat-form-field appearance="fill">
+        <mat-label>Paper's name or conference</mat-label>
+        <input matInput formControlName="searchStr">
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill">
         <mat-label>Years</mat-label>
         <mat-select formControlName="years">
           <mat-option>All</mat-option>
           <mat-option *ngFor="let year of allYears" [value]="year">{{year}}</mat-option>
         </mat-select>
-    </mat-form-field>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Authors</mat-label>
-      <mat-select formControlName="authors">
-        <mat-option>All</mat-option>
-        <mat-option *ngFor="let author of allAuthors" [value]="author">{{author}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Authors</mat-label>
+        <mat-select formControlName="authors">
+          <mat-option>All</mat-option>
+          <mat-option *ngFor="let author of allAuthors" [value]="author">{{author}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <button mat-button (click)="restoreFilters()">Clear</button>
-</form>
-
-<div *ngIf="filteredPapers | async as paperYears">
-    <div *ngFor="let item of paperYears">
-      <h2>{{ item.year }}</h2>
-      <div class="uranus paper-list">
-        <uranus-paper *ngFor="let p of item.papers" [paper]="p"></uranus-paper>
+      <button mat-button color="warn" (click)="restoreFilters()">Clear</button>
+      <button mat-button (click)="drawer.close()">Hide</button>
+    </form>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container">
+      <div class="toolbar">
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>filter_list</mat-icon>
+        </button>
+      </div>
+      
+  
+      <div *ngIf="filteredPapers | async as paperYears" >
+        <div *ngFor="let item of paperYears">
+          <h2>{{ item.year }}</h2>
+          <div class="uranus paper-list">
+            <uranus-paper *ngFor="let p of item.papers" [paper]="p" [mode]="mode"></uranus-paper>
+          </div>
+        </div>
+  
       </div>
     </div>
-
-</div>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>

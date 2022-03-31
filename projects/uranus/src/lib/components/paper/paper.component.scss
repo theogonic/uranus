@@ -11,3 +11,15 @@
         gap: 4px;
     }
 }
+
+.simple-paper {
+    .title {
+        margin-bottom: 0;
+    }
+    .authors {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}

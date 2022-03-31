@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, Inject, Input, OnInit } from '@angu
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Author, Paper } from './paper';
 
+export type PaperMode = "simple" | "card";
+
 @Component({
   selector: 'uranus-paper',
   templateUrl: './paper.component.html',
@@ -12,6 +14,9 @@ export class PaperComponent implements OnInit {
 
   @Input()
   paper!: Paper;
+
+  @Input()
+  mode: PaperMode = "card";
 
   abstractOpen = false
 

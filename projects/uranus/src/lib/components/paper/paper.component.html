@@ -1,4 +1,16 @@
-<mat-card>
+<ng-container [ngSwitch]="mode">
+  <ng-component *ngSwitchCase="'card'" [ngTemplateOutlet]="cardMode">
+
+  </ng-component>
+
+  <ng-component *ngSwitchCase="'simple'" [ngTemplateOutlet]="simpleMode">
+
+  </ng-component>
+
+</ng-container>
+
+<ng-template #cardMode>
+  <mat-card>
     <mat-card-title>{{ paper.name }}</mat-card-title>
     <mat-card-subtitle>
       <div class="subtitle-wrapper">
@@ -11,33 +23,84 @@
           <span>{{paper.year}} {{paper.month}}</span>
         </div>
       </div>
-      
-    </mat-card-subtitle> 
+
+    </mat-card-subtitle>
     <mat-card-content>
-        <mat-chip-list aria-label="paper authors">
-          <mat-chip *ngFor="let author of paper.authors" (click)="clickAuthor(author)">{{author.name | removeSuffix:"*"}}</mat-chip>
-        </mat-chip-list> 
+      <mat-chip-list aria-label="paper authors">
+        <mat-chip *ngFor="let author of paper.authors" (click)="clickAuthor(author)">{{author.name | removeSuffix:"*"}}
+        </mat-chip>
+      </mat-chip-list>
     </mat-card-content>
     <mat-card-actions>
-        <a *ngIf="paper.githubStarsSvgLink" mat-button  [href]="paper.githubLink">
-          <img [src]="paper.githubStarsSvgLink"/>
-        </a>
+     
 
-        <a *ngIf="paper.githubLink && !paper.githubStarsSvgLink" matTooltip="Link" mat-icon-button  [href]="paper.githubLink">
-          <mat-icon>link</mat-icon>
-        </a>
-        
-        <a *ngIf="paper.paperLink" matTooltip="PDF" mat-icon-button (click)="openInNewTab(paper.paperLink)">
-            <mat-icon>picture_as_pdf</mat-icon>
-        </a>
-        <a *ngIf="paper.slideLink" matTooltip="Slides" mat-icon-button (click)="openInNewTab(paper.slideLink)">
-          <mat-icon>slideshow</mat-icon>
+      <a *ngIf="paper.githubLink && !paper.githubStarsSvgLink" matTooltip="Link" mat-icon-button
+        [href]="paper.githubLink">
+        <mat-icon>link</mat-icon>
       </a>
-        <a *ngIf="paper.abstract" matTooltip="Abstract" mat-icon-button (click)="showAbstract()">
-          <mat-icon>text_snippet</mat-icon>
-        </a>
-        <a matTooltip="BibTex" *ngIf="paper.bibtex" mat-icon-button (click)="showBibtex()">
-          <mat-icon>share</mat-icon>
-        </a>
+
+      <a *ngIf="paper.paperLink" matTooltip="PDF" mat-icon-button (click)="openInNewTab(paper.paperLink)">
+        <mat-icon>picture_as_pdf</mat-icon>
+      </a>
+      <a *ngIf="paper.slideLink" matTooltip="Slides" mat-icon-button (click)="openInNewTab(paper.slideLink)">
+        <mat-icon>slideshow</mat-icon>
+      </a>
+      <a *ngIf="paper.abstract" matTooltip="Abstract" mat-icon-button (click)="showAbstract()">
+        <mat-icon>text_snippet</mat-icon>
+      </a>
+      <a matTooltip="BibTex" *ngIf="paper.bibtex" mat-icon-button (click)="showBibtex()">
+        <mat-icon>share</mat-icon>
+      </a>
+      <a *ngIf="paper.githubStarsSvgLink" mat-button [href]="paper.githubLink">
+        <img [src]="paper.githubStarsSvgLink" />
+      </a>
     </mat-card-actions>
-</mat-card>
+  </mat-card>
+
+</ng-template>
+
+<ng-template #simpleMode>
+  <div class="simple-paper">
+    <h3 class="title">{{ paper.name }}</h3>
+    <div class="authors">
+      <a href="javascript:void(0)" *ngFor="let author of paper.authors" (click)="clickAuthor(author)">{{author.name |
+        removeSuffix:"*"}}</a>
+    </div>
+    <div class="subtitle-wrapper">
+      <div class="row">
+        <span>{{paper.publicAt}}</span>
+      </div>
+      <div class="row">
+        <span>{{paper.year}} {{paper.month}}</span>
+      </div>
+    </div>
+
+    <div>
+
+     
+      <a *ngIf="paper.githubLink && !paper.githubStarsSvgLink" matTooltip="Link" mat-icon-button
+        [href]="paper.githubLink">
+        <mat-icon>link</mat-icon>
+      </a>
+
+      <a *ngIf="paper.paperLink" matTooltip="PDF" mat-icon-button (click)="openInNewTab(paper.paperLink)">
+        <mat-icon>picture_as_pdf</mat-icon>
+      </a>
+      <a *ngIf="paper.slideLink" matTooltip="Slides" mat-icon-button (click)="openInNewTab(paper.slideLink)">
+        <mat-icon>slideshow</mat-icon>
+      </a>
+      <a *ngIf="paper.abstract" matTooltip="Abstract" mat-icon-button (click)="showAbstract()">
+        <mat-icon>text_snippet</mat-icon>
+      </a>
+      <a matTooltip="BibTex" *ngIf="paper.bibtex" mat-icon-button (click)="showBibtex()">
+        <mat-icon>share</mat-icon>
+      </a>
+
+      <a *ngIf="paper.githubStarsSvgLink" mat-button [href]="paper.githubLink">
+        <img [src]="paper.githubStarsSvgLink" />
+      </a>
+
+    </div>
+  </div>
+
+</ng-template>

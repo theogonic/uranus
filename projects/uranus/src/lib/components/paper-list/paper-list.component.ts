@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { BehaviorSubject, combineLatest, empty, merge, Observable, of, Subject, Subscription } from 'rxjs';
 import { debounceTime, map, startWith, tap } from 'rxjs/operators';
 import { authorExistInPaper, getAuthorsInStringArr, Paper } from '../paper/paper';
+import { PaperMode } from '../paper/paper.component';
 
 
 type PapersByYear = {
@@ -37,6 +38,9 @@ export class PaperListComponent implements OnInit, OnChanges {
 
   @Input()
   papers!: Paper[];
+
+  @Input()
+  mode:PaperMode = "card";
 
   filtersForm!: FormGroup;
   allPapers!: BehaviorSubject<Paper[]>;
@@ -175,7 +179,7 @@ export class PaperListComponent implements OnInit, OnChanges {
   }
 
   restoreFilters(){
-    this.filtersForm.setValue({authors:"", years:""})
+    this.filtersForm.setValue({authors:"", years:"", searchStr:""})
   }
 
   
