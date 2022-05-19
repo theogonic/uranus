@@ -63,15 +63,13 @@
   <div class="simple-paper">
     <h3 class="title">{{ paper.name }}</h3>
     <div class="authors">
-      <a href="javascript:void(0)" *ngFor="let author of paper.authors" (click)="clickAuthor(author)">{{author.name |
-        removeSuffix:"*"}}</a>
+      <div class="author" *ngFor="let author of paper.authors" (click)="clickAuthor(author)">{{author.name |
+        removeSuffix:"*"}}</div>
     </div>
     <div class="subtitle-wrapper">
       <div class="row">
-        <span>{{paper.publicAt}}</span>
-      </div>
-      <div class="row">
-        <span>{{paper.year}} {{paper.month}}</span>
+        <i>{{paper.publicAt}} <span class="date">{{paper.year}} {{paper.month}}</span></i>
+        
       </div>
     </div>
 

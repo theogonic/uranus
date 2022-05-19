@@ -1,17 +1,50 @@
-<mat-card (click)="openInNewTab(person.link)">
-    <mat-card-content>
-        <div class="person">
 
-            <div class="avatar-cropper">
-                <img [src]="person.avatar">
-            </div>
-            <h3>{{ person.name }}</h3>
-            <div *ngFor="let desc of person.desc">
-                {{desc}}
-            </div>
-        </div>
+
+<ng-container [ngSwitch]="mode">
+    <ng-component *ngSwitchCase="'card'" [ngTemplateOutlet]="cardMode">
         
-    </mat-card-content>
-    
+    </ng-component>
+  
+    <ng-component *ngSwitchCase="'simple'" [ngTemplateOutlet]="simpleMode">
+  
+    </ng-component>
+  
+  </ng-container>
 
-</mat-card>
+  <ng-template #cardMode>
+    <mat-card (click)="openInNewTab(person.link)">
+        <mat-card-content>
+            <div class="person">
+    
+                <div class="avatar-cropper">
+                    <img [src]="person.avatar">
+                </div>
+                <h3>{{ person.name }}</h3>
+                <div *ngFor="let desc of person.desc">
+                    {{desc}}
+                </div>
+            </div>
+            
+        </mat-card-content>
+        
+    
+    </mat-card>
+  </ng-template>
+  <ng-template #simpleMode>
+    <div (click)="openInNewTab(person.link)">
+            <div class="person">
+    
+                <div class="avatar-cropper">
+                    <img [src]="person.avatar">
+                </div>
+                <h3>{{ person.name }}</h3>
+                <div *ngFor="let desc of person.desc">
+                    {{desc}}
+                </div>
+            </div>
+            
+
+        
+    
+    </div>
+  </ng-template>

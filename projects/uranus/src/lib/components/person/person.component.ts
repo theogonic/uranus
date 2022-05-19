@@ -11,6 +11,9 @@ export class PersonComponent implements OnInit {
   @Input()
   person!: Person;
 
+  @Input()
+  mode: "simple" | "card" = "card";
+
   constructor() { }
 
   ngOnInit(): void {

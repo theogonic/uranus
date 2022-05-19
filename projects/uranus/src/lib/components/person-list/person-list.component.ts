@@ -28,6 +28,9 @@ export class PersonListComponent implements OnInit, OnChanges {
   @Input()
   groupsConfig: Record<string, string> = {};
 
+  @Input()
+  mode: "simple" | "card" = "card";
+  
   allPeople!: BehaviorSubject<Person[]>;
   groupPeople!: Observable<GroupPeople[]>;
 

@@ -21,5 +21,12 @@
         flex-direction: row;
         flex-wrap: wrap;
         gap: 8px;
+
+        .author {
+            cursor: pointer;
+        }
+    }
+    .date {
+        color: gray;
     }
 }

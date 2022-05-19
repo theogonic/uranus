@@ -164,6 +164,7 @@ def main():
     uranus_dicts = []
     
     for e in bibdb.entries:
+
         uranus_dicts.append(
             bibentry_to_uranus_dict(
                 e, 
@@ -171,6 +172,7 @@ def main():
                 bibdb_assets_url_prefix
             )
         )
+
     
     people_data = None
     if people_yaml_file:
