@@ -20,7 +20,7 @@
         </div>
         <div class="row">
           <mat-icon>event</mat-icon>
-          <span>{{paper.year}} {{paper.month}}</span>
+          <span>{{paper.year}} {{paper.month | titlecase}}</span>
         </div>
       </div>
 
@@ -68,7 +68,7 @@
     </div>
     <div class="subtitle-wrapper">
       <div class="row">
-        <i>{{paper.publicAt}} <span class="date">{{paper.year}} {{paper.month}}</span></i>
+        <i>{{paper.publicAt}} <span class="date">{{paper.year}} {{paper.month | titlecase}}</span></i>
         
       </div>
     </div>
