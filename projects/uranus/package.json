@@ -1,6 +1,6 @@
 {
   "name": "@theogonic/uranus",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": false,
   "peerDependencies": {
     "@angular/common": "^13.3.0",
