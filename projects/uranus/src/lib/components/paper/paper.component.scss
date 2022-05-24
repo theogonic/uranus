@@ -20,10 +20,10 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 8px;
 
         .author {
             cursor: pointer;
+            margin-right: 8px;
         }
     }
     .date {
